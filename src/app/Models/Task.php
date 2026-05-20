@@ -6,24 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-
-
-class Child extends Model
+class Task extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'parent_id',
-        'name',
+        'child_id',
+        'title',
+        'points',
     ];
 
-    public function parent()
+    public function child()
     {
-        return $this->belongsTo(Parent::class);
-    }
-
-    public function tasks()
-    {
-        return $this->hasMany(Task::class);
+        return $this->belongsTo(Child::class);
     }
 }
