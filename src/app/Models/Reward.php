@@ -6,24 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Task extends Model
+class Reward extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'child_id',
-        'title',
         'points',
+        'description',
     ];
 
+    //リレーション:このご褒美は、どの子供に属しているか
     public function child()
+
     {
         return $this->belongsTo(Child::class, 'child_id');
-    }
 
-    //　リレーション:このタスクは、複数の完了記録を持っている
-    public function completions()
-    {
-        return $this->hasMany(TaskCompletion::class, 'task_id');
     }
 }
