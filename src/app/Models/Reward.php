@@ -11,16 +11,16 @@ class Reward extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'child_id',
-        'points',
+        'name',
+        'required_points',
         'description',
     ];
 
-    //リレーション:このご褒美は、どの子供に属しているか
-    public function child()
+    //リレーション:このご褒美を登録した親
+    public function user()
 
     {
-        return $this->belongsTo(Child::class, 'child_id');
+        return $this->belongsTo(User::class, 'user_id');
 
     }
 }

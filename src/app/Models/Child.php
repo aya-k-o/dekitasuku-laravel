@@ -13,7 +13,6 @@ class Child extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'user_id',
         'name',
     ];
 
@@ -40,8 +39,8 @@ class Child extends Model
     }
 
     //リレーション:この子供は、複数のご褒美を持っている
-    public function rewards()
+    public function rewardExchanges()
     {
-        return $this->hasMany(Reward::class, 'child_id');
+        return $this->hasMany(RewardExchange::class, 'child_id');
     }
 }
