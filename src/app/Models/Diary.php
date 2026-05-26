@@ -22,4 +22,10 @@ class Diary extends Model
     {
         return $this->belongsTo(Child::class, 'child_id');
     }
+
+    //リレーション: この日記への返信一覧
+    public function replies()
+    {
+        return $this->hasMany(DiaryReply::class);
+    }
 }
