@@ -14,7 +14,11 @@
             @if($completedTaskIds->contains($task->id))
                 ✅
             @else
-                ☐
+                <form method="POST" action="{{ route('child.tasks.complete')}}">
+                    @csrf
+                    <input type="hidden" name="task_id" value="{{ $task->id}}">
+                    <button type="submit">☐</button>
+                </form>
             @endif
         </p>
     @endforeach

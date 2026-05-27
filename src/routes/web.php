@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Child\SelectController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Child\TodayController;
+use App\Http\Controllers\Child\TaskCompletionController;
 
 Route::middleware('auth')->group(function () {
 
@@ -21,6 +22,9 @@ Route::middleware('auth')->group(function () {
     //子ども画面
     Route::get('/child/today', [TodayController::class, 'index'])
         ->name('child.today');
+    
+    //タスク完了
+    Route::post('/child/tasks/complete',[TaskCompletionController::class,'store'])->name('child.tasks.complete');
 
 
 //プロフィール(Breeze標準)
