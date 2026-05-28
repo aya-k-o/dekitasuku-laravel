@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('child_id')->constrained()->onDelete('cascade');
             $table->text('body')->nullable();
-            $table->integer('mind_score');
-            $table->integer('body_score');
+            $table->integer('mind_score')->nullable();
+            $table->integer('body_score')->nullable();
+            $table->date('diary_date');
             $table->softDeletes();
             $table->timestamps();
         });

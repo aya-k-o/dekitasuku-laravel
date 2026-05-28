@@ -28,6 +28,11 @@
         <p>今日の日記はもう書いたよ</p>
     @else
         <p>まだ書いていません</p>
+        <form method="POST" action="{{ route('child.diaries.store')}}">
+         @csrf
+         <textarea name="body"></textarea>
+         <button type="submit">☐</button>
+        </form>
     @endif
 </body>
 </html>

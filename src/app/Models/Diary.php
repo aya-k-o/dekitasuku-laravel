@@ -15,6 +15,7 @@ class Diary extends Model
         'body',
         'mind_score',
         'body_score',
+        'diary_date',
     ];
 
     //リレーション:この日記は、どの子供に属しているか

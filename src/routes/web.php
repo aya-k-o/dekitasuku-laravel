@@ -5,6 +5,7 @@ use App\Http\Controllers\Child\SelectController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Child\TodayController;
 use App\Http\Controllers\Child\TaskCompletionController;
+use App\Http\Controllers\Child\DiaryController;
 
 Route::middleware('auth')->group(function () {
 
@@ -25,7 +26,12 @@ Route::middleware('auth')->group(function () {
     
     //タスク完了
     Route::post('/child/tasks/complete',[TaskCompletionController::class,'store'])->name('child.tasks.complete');
-
+    
+    //日記
+    Route::get('/child/diaries', [DiaryController::class, 'index'])
+         ->name('child.diaries');
+    Route::post('/child/diaries', [TodayController::class, 'store'])
+         ->name('child.diaries.store');
 
 //プロフィール(Breeze標準)
 

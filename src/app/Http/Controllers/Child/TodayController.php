@@ -29,4 +29,17 @@ class TodayController extends Controller
         return view('child.today', compact('child', 'tasks', 'completedTaskIds', 'diary'));
     }
 
+    public function store(Request $request)
+    {
+     $childId = session('selected_child_id');
+         
+     Diary::create([
+        'child_id' => $childId,
+        'diary_date' => today(),
+        'body' => $request->body,
+     ]);
+
+    return redirect()->route('child.today');
+     }
+
 }
