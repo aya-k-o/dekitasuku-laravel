@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Child\TodayController;
 use App\Http\Controllers\Child\TaskCompletionController;
 use App\Http\Controllers\Child\DiaryController;
+use App\Http\Controllers\Admin\DashboardController;
 
 Route::middleware('auth')->group(function () {
 
@@ -32,6 +33,10 @@ Route::middleware('auth')->group(function () {
          ->name('child.diaries');
     Route::post('/child/diaries', [TodayController::class, 'store'])
          ->name('child.diaries.store');
+
+    //管理画面
+    Route::get('/admin/dashboard',[DashboardController::class, 'index'])
+        ->name('admin.dashboard');
 
 //プロフィール(Breeze標準)
 
