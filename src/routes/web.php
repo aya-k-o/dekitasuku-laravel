@@ -7,6 +7,8 @@ use App\Http\Controllers\Child\TodayController;
 use App\Http\Controllers\Child\TaskCompletionController;
 use App\Http\Controllers\Child\DiaryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\TaskController;
+use App\Http\Controllers\Admin\ChildController;
 
 Route::middleware('auth')->group(function () {
 
@@ -37,7 +39,13 @@ Route::middleware('auth')->group(function () {
     //管理画面
     Route::get('/admin/dashboard',[DashboardController::class, 'index'])
         ->name('admin.dashboard');
-
+    Route::get('/admin/tasks',[TaskController::class, 'index'])->name('admin.tasks');
+    Route::post('/admin/tasks', [TaskController::class, 'store'])->name('admin.tasks.store');
+    Route::delete('/admin/tasks/{task}', [TaskController::class, 'destroy'])->name('admin.tasks.destroy');
+    //子ども管理
+    Route::get('/admin/children', [ChildController::class, 'index'])->name('admin.children');
+Route::post('/admin/children', [ChildController::class, 'store'])->name('admin.children.store');
+Route::delete('/admin/children/{child}', [ChildController::class, 'destroy'])->name('admin.children.destroy');
 //プロフィール(Breeze標準)
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
